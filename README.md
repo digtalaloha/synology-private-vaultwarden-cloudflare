@@ -61,7 +61,7 @@ mkdir vw-data caddy-config caddy-data
          * Token name: Edit it as you wish (example ACME DNS challenge for vw220).
          * Under Permissions, leave the Zone/DNS/Edit listing as is.
          * Under Permissions, click + Add more and populate the boxes from left to right with Zone/Zone/Read.
-         * Under Zone Resources, from left to right select Include/Specific zone/<Your Domain>.
+         * Under Zone Resources, from left to right select Include/Specific zone/CLOUDFLARE_DOMAIN_YOU_ARE_USING.
          * Under TTL, set an End Date for a date far into the future (this is when the token that will be generated will expire).
          * Click Continue to summary.
          * Click Create Token then copy and save the API Token that was generated (it will be used later).

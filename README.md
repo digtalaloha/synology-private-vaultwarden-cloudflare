@@ -4,7 +4,7 @@
 
 This repository will provide you the details to run a private, LAN access only, instance of Vaultwarden, using docker-compose, on a Synology NAS.  The setup will be using the Caddy web server that will obtain a Let's Encrypt certificate for a subdomain that is setup through Cloudflare DNS.
 
-Because Synology NASs use both ports 80 and 443 for DSM we'll need to use a custom port number when accessing Vaultwarden.  The url to access Vaultwarden would look something like https://vw220.digitalaloha.net:8443.  See step 12 in the Setup Steps below to set the custom ports.
+Because Synology NASs use both ports 80 and 443 for DSM we'll need to use a custom port number when accessing Vaultwarden.  The url to access Vaultwarden would look something like https://vw220.digitalaloha.net:8443.  See step 8 in the Setup Steps below to set the custom ports.
 
 I referenced the following links for much of the setup description below.
 
@@ -44,35 +44,28 @@ cd synology-private-vaultwarden-cloudflare
 ```
 mkdir vw-data caddy-config caddy-data
 ```
-7. Go to [Cloudflare](https://www.cloudflare.com) and login.
-8. Select an active domain you would like to use (I'm assuming you have a domain that you would like to use configured with the nameservers assigned by Cloudflare).
-9. Select DNS then click Add record then enter or select the following:
-  1. Type - A.
-  2. Name - Name you would like to use (example - enter vw220 if you would like to use vw220.digitalaloha.net).
-  3. IPv4 address - Enter in the private IP address of your Synology NAS (example 10.0.4.43).
-  4. Proxy status - Toggle off.
-  5. Click Save.
-10. Click on the person icon (upper right corner), select My Profile then select the API Tokens listing.
-11. Click Create Token and do the following:
-    1. Click Create Token for the Edit zone DNS template.
-    2. Token name: Edit it as you wish (example ACME DNS challenge for vw220).
-    3. Under Permissions, leave the Zone/DNS/Edit listing as is.
-    4. Under Permissions, click + Add more and populate the boxes from left to right with Zone/Zone/Read.
-    5. Under Zone Resources, from left to right select Include/Specific zone/<Your Domain>.
-    6. Under TTL, set an End Date for a date far into the future (this is when the token that will be generated will expire).
-    7. Click Continue to summary.
-    8. Click Create Token then copy and save the API Token that was generated (it will be used later).
-13. Download Caddy with DNS challenge module for Cloudflare from this link -> [Caddy Download Page](https://caddyserver.com/download).
-   * Make sure to select the platform Linux amd64, select caddy-dns/cloudflare, then click Download.
-14. Upload the Caddy file you just downloaded to your Synology NAS to the /volume1/docker/synology-private-vaultwarden-cloudflare directory.  
-   * I used File Station to upload the file.
-15. While still in File Station rename the file to **caddy**.
-16. From the command line confirm the permissions are as follow and if not run the second command listed.
-```
-ls -la caddy (this should return -rwxrwxrwx+ for the permissions)
-chmod a+x caddy (run this if the permissions isn't what is listed above)
-```
-12. Edit the .env file with the specifics of your setup.  
+7. Go to [cloudflare.com](https://www.cloudflare.com) and login to your account (Assumption - You already have a domain configured with the nameservers assigned by Cloudflare).
+   * First we'll setup a subdomain that will be used to access Vaulwarden.
+      1. Select an active domain you would like to use.
+      2. Select the DNS listing then click Add record.
+      3. Enter or select the following:
+         * Type - A.
+         * Name - Name you would like to use (example - enter vw220 if you would like to use vw220.digitalaloha.net).
+         * IPv4 address - Enter in the private IP address of your Synology NAS (example 10.0.4.43).
+         * Proxy status - Toggle off.
+         * Click Save.
+   * Next we'll need to create an API Token.
+      1. Click on the person icon (upper right corner), select My Profile then select the API Tokens listing.
+      2. Click Create Token.
+      3. Click Use Template for the Edit zone DNS template and do the following:
+         * Token name: Edit it as you wish (example ACME DNS challenge for vw220).
+         * Under Permissions, leave the Zone/DNS/Edit listing as is.
+         * Under Permissions, click + Add more and populate the boxes from left to right with Zone/Zone/Read.
+         * Under Zone Resources, from left to right select Include/Specific zone/<Your Domain>.
+         * Under TTL, set an End Date for a date far into the future (this is when the token that will be generated will expire).
+         * Click Continue to summary.
+         * Click Create Token then copy and save the API Token that was generated (it will be used later).
+8. Edit the .env file with the specifics of your setup.  
   * Note - port 8080 and 8443 are the host (Synology NAS) ports that will be mapped to the Caddy ports 80 and 443 respectively.  These are the ports I used in my setup.
   * These entries will be used to auto populate the docker-compose.yaml file, which will in turn auto populate the Caddyfile.
 ```

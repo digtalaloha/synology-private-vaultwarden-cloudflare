@@ -66,8 +66,8 @@ mkdir vw-data caddy-config caddy-data
          * Click Continue to summary.
          * Click Create Token then copy and save the API Token that was generated (it will be used later).
 8. Edit the .env file with the specifics of your setup.  
-  * Note - port 8080 and 8443 are the host (Synology NAS) ports that will be mapped to the Caddy ports 80 and 443 respectively.  These are the ports I used in my setup.
-  * These entries will be used to auto populate the docker-compose.yaml file, which will in turn auto populate the Caddyfile.
+   * Note - port 8080 and 8443 are the host (Synology NAS) ports that will be mapped to the Caddy ports 80 and 443 respectively.  These are the ports I used in my setup.
+   * These entries will be used to auto populate the docker-compose.yaml file, which will in turn auto populate the Caddyfile.
 ```
 CADDY_HTTP_PORT=8080
 CADDY_HTTPS_PORT=8443

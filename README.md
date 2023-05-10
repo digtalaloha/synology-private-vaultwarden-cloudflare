@@ -45,7 +45,7 @@ cd synology-private-vaultwarden-cloudflare
 mkdir vw-data caddy-config caddy-data
 ```
 7. Go to [cloudflare.com](https://www.cloudflare.com) and login to your account (Assumption - You already have a domain configured with the nameservers assigned by Cloudflare).
-   * First we'll setup a subdomain that will be used to access Vaulwarden.
+   * First we'll setup a subdomain that will be used to access Vaultwarden.
       1. Select an active domain you would like to use.
       2. Select the DNS listing then click Add record.
       3. Enter or select the following:

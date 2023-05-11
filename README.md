@@ -6,7 +6,7 @@ This repository will provide you the details to run a private, LAN access only, 
 
 Because Synology NASs use both ports 80 and 443 for DSM we'll need to use a custom port number when accessing Vaultwarden.  The url to access Vaultwarden would look something like https://vw220.digitalaloha.net:8443.  See step 8 in the Setup Steps below to set the custom ports.
 
-I referenced the following links for much of the setup description below.
+I referenced the following links for much of the setup described below.
 
 * [Running a private vaultwarden instance with Let’s Encrypt certs](https://github.com/dani-garcia/vaultwarden/wiki/Running-a-private-vaultwarden-instance-with-Let%27s-Encrypt-certs)
 * [Docker-compose Caddy with DNS challenge](https://github.com/dani-garcia/vaultwarden/wiki/Using-Docker-Compose#caddy-with-dns-challenge)

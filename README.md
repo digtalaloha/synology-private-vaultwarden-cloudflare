@@ -15,7 +15,7 @@ I referenced the following links for much of the setup described below.
 
 ### YouTube Video
 If you would like directions in visual format then check out my YouTube video that runs through the setup.
-* [Run Your Own Private Vaultwarden Instance With Docker-Compose, Git, And Cloudflare DNS On Your Synology NAS](Video to come)
+* [Run Your Own Private Vaultwarden Instance With Docker-Compose, Git, And Cloudflare DNS On Your Synology NAS](https://youtu.be/ZBJR0KwP7OQ)
 
 ### Prerequistes
 On your Synology NAS you'll need to do the following:
